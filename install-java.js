@@ -1,6 +1,18 @@
 const { exec } = require("child_process");
 const os = require("os");
 
+const checkJava = () => {
+  exec("java -version", (error, stdout, stderr) => {
+    if (!error) {
+      console.log("✅ Java ya está instalado.");
+      return;
+    }
+
+    console.log("🔍 Java no está instalado. Procediendo con la instalación...");
+    installJava();
+  });
+};
+
 const installJava = () => {
   let command;
 
@@ -12,17 +24,16 @@ const installJava = () => {
     command = "sudo apt update && sudo apt install -y openjdk-17-jre";
   }
 
-  console.log(`Instalando Java con: ${command}`);
+  console.log(`🚀 Instalando Java con: ${command}`);
 
   exec(command, (error, stdout, stderr) => {
     if (error) {
-      console.error(`Error al instalar Java: ${error.message}`);
+      console.error(`❌ Error al instalar Java: ${error.message}`);
       return;
     }
-    console.log(`Salida estándar: ${stdout}`);
-    console.error(`Salida de error: ${stderr}`);
-    console.log("Java instalado correctamente.");
+    console.log(`✅ Java instalado correctamente.`);
   });
 };
 
-installJava();
+// Ejecutar la verificación
+checkJava();
