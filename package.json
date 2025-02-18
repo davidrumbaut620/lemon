@@ -4,7 +4,9 @@
   "description": "Layer 3 Advanced Network Management and Monitoring System",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-java": "node install-java.js",
+    "postinstall": "node install-java.js"
   },
   "repository": {
     "type": "git",
